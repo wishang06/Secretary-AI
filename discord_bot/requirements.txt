@@ -1,5 +1,0 @@
-discord.py>=2.3.2
-aiohttp-socks>=0.8.4
-certifi>=2024.2.2
-openai>=1.0.0
-python-dotenv>=1.0.1

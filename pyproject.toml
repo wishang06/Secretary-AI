@@ -1,0 +1,56 @@
+[project]
+name = "secretary-ai"
+version = "0.1.0"
+description = "Discord/Messenger AI bot for meeting transcript integration and business information management"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    # Discord Bot
+    "discord-py>=2.3.2",
+    "aiohttp-socks>=0.8.4",
+    "certifi>=2024.2.2",
+    
+    # OpenAI
+    "openai>=1.0.0",
+    
+    # Environment
+    "python-dotenv>=1.0.1",
+    
+    # Database (async PostgreSQL)
+    "sqlalchemy[asyncio]>=2.0.0",
+    "asyncpg>=0.29.0",
+    "greenlet>=3.0.0",
+    
+    # File watching
+    "watchdog>=3.0.0",
+    
+    # Async file operations
+    "aiofiles>=23.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+]
+
+[project.scripts]
+secretary-ai = "main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501"]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
