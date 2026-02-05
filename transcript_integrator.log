@@ -1,0 +1,6 @@
+2026-02-05 19:13:49,922 - INFO - TranscriptIntegrator initialized with model: gpt-4.1-mini
+2026-02-05 19:13:53,695 - INFO - Loading context from database...
+2026-02-05 19:13:53,952 - INFO - TranscriptIntegrator closed
+2026-02-05 19:18:48,965 - INFO - FileWatcher initialized for: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing
+2026-02-05 19:18:48,965 - INFO - Started watching: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing
+2026-02-05 19:19:27,951 - INFO - File watcher stopped

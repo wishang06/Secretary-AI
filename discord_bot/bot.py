@@ -79,16 +79,53 @@ def create_bot(
     proxy: str | None = None,
 ) -> commands.Bot:
     """Create and configure the Discord bot."""
-    
+
     bot = commands.Bot(
         command_prefix="!",
         intents=intents,
         connector=connector,
         proxy=proxy,
     )
-    
+
     # Transcript integrator instance (initialized lazily)
     bot.transcript_integrator = None
+    # In-memory short-term conversation history:
+    # key: (channel_id, user_id) -> list[tuple[role, content]]
+    # role is "user" or "assistant"
+    bot.conversation_history: dict[tuple[int, int], list[tuple[str, str]]] = {}
+
+    def _build_conversation_input(
+        history: list[tuple[str, str]],
+        user_message: str,
+        max_chars: int = 3000,
+        max_turns: int = 6,
+    ) -> str:
+        """
+        Build a compact conversation transcript for the model.
+
+        We keep only the last `max_turns` (user+assistant pairs) and trim
+        the overall character length from the start if it gets too long.
+        """
+        if not history:
+            return user_message
+
+        # Keep only the last N turns
+        trimmed_history = history[-(max_turns * 2) :]
+
+        lines: list[str] = []
+        for role, content in trimmed_history:
+            prefix = "User:" if role == "user" else "Assistant:"
+            lines.append(f"{prefix} {content}")
+
+        history_text = "\n".join(lines)
+        if len(history_text) > max_chars:
+            history_text = history_text[-max_chars:]
+
+        return (
+            "Here is the previous conversation between you and the user:\n"
+            f"{history_text}\n\n"
+            f"User: {user_message}\nAssistant:"
+        )
 
     @bot.event
     async def on_ready() -> None:
@@ -129,11 +166,18 @@ def create_bot(
 
         if not text:
             text = "Hello!"
+        # -------- Short-term memory handling --------
+        # Use (channel_id, user_id) as the conversation key so each user has
+        # separate context per channel/DM.
+        key = (message.channel.id, message.author.id)
+        history = bot.conversation_history.get(key, [])
+
+        prompt_input = _build_conversation_input(history, text)
 
         request_kwargs = {
             "model": OPENAI_MODEL,
             "instructions": SYSTEM_PROMPT,
-            "input": text,
+            "input": prompt_input,
             "max_output_tokens": 500,
         }
 
@@ -155,6 +199,15 @@ def create_bot(
             reply = "Sorry, I didn't get a response."
         if len(reply) > 1900:
             reply = reply[:1900].rstrip() + "..."
+
+        # Update conversation history:
+        # append user message and assistant reply, then trim to last N turns.
+        history.append(("user", text))
+        history.append(("assistant", reply))
+        # Keep only the last 10 messages (5 full turns) in raw store;
+        # _build_conversation_input will trim further if needed.
+        history = history[-10:]
+        bot.conversation_history[key] = history
 
         await message.channel.send(reply)
         await bot.process_commands(message)

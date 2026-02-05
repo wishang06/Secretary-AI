@@ -215,7 +215,7 @@ class ProjectTasks(Base):
     
     # Relationships
     project = relationship("Project", back_populates="project_tasks")
-    task = relationship("Task", back_populates="task")
+    task = relationship("Task", back_populates="project_tasks")
 
 
 class TaskMembers(Base):
