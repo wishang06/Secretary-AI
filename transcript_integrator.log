@@ -418,3 +418,117 @@ DETAIL:  Key (task_id)=(3) already exists.
 2026-02-06 02:30:36,537 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 2026-02-06 02:31:00,089 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 2026-02-06 02:31:26,511 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-07 02:07:24,409 - INFO - FileWatcher initialized for: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing
+2026-02-07 02:07:24,409 - INFO - Started watching: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing
+2026-02-07 02:14:35,154 - INFO - New file detected: test_meeting.txt
+2026-02-07 02:16:18,280 - INFO - File copied: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing\test_meeting.txt -> C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing\full\INGESTED_full_06-02-2026_test_full_meeting.txt
+2026-02-07 02:16:22,069 - INFO - Original file deleted: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing\test_meeting.txt
+2026-02-07 02:16:29,129 - INFO - TranscriptIntegrator initialized with model: gpt-4.1-mini
+2026-02-07 02:16:29,129 - INFO - Loading context from database...
+2026-02-07 02:16:32,623 - INFO - Loaded 8 members, 3 projects, 4 topics
+2026-02-07 02:16:32,623 - INFO - Processing transcript: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing\full\INGESTED_full_06-02-2026_test_full_meeting.txt
+2026-02-07 02:16:32,627 - INFO - Extracting meeting information with LLM...
+2026-02-07 02:16:34,804 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-07 02:16:42,999 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-07 02:16:50,333 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-07 02:16:57,488 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-07 02:16:57,496 - INFO - Creating new topic: 'Project maintenance and housekeeping'
+2026-02-07 02:16:57,968 - ERROR - Transcript integration error: (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.UniqueViolationError'>: duplicate key value violates unique constraint "TOPIC_pkey"
+DETAIL:  Key (topic_id)=(1) already exists.
+[SQL: INSERT INTO public.topic (topic_name, topic_description) VALUES ($1::VARCHAR, $2::VARCHAR) RETURNING public.topic.topic_id, public.topic.ingestion_timestamp]
+[parameters: ('Project maintenance and housekeeping', 'The team addressed technical housekeeping tasks including deprecating the old NotesShare project to avoid unnecessary AWS costs, updating outdated documentation for LectureLens, and managing backend infrastructure issues like killing unused containers.')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+NoneType: None
+2026-02-07 02:17:35,771 - INFO - File watcher stopped
+2026-02-07 02:19:04,965 - INFO - FileWatcher initialized for: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing
+2026-02-07 02:19:04,966 - INFO - Started watching: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing
+2026-02-07 02:19:35,492 - INFO - File moved: INGESTED_full_06-02-2026_test_full_meeting.txt -> test_trans.txt
+2026-02-07 02:19:54,207 - INFO - New file detected: test_trans.txt
+2026-02-07 02:20:19,566 - INFO - File copied: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing\test_trans.txt -> C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing\full\INGESTED_full_07-02-2026_trial_full_meeting.txt
+2026-02-07 02:20:22,911 - INFO - Original file deleted: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing\test_trans.txt
+2026-02-07 02:20:26,256 - INFO - TranscriptIntegrator initialized with model: gpt-4.1-mini
+2026-02-07 02:20:26,257 - INFO - Loading context from database...
+2026-02-07 02:20:29,741 - INFO - Loaded 8 members, 3 projects, 4 topics
+2026-02-07 02:20:29,742 - INFO - Processing transcript: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing\full\INGESTED_full_07-02-2026_trial_full_meeting.txt
+2026-02-07 02:20:29,743 - INFO - Extracting meeting information with LLM...
+2026-02-07 02:20:32,278 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-07 02:20:43,426 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-07 02:20:50,987 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-07 02:20:58,428 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-07 02:20:58,432 - INFO - Creating new topic: 'Product development and technical challenges'
+2026-02-07 02:20:58,787 - INFO - Creating new topic: 'Event planning'
+2026-02-07 02:20:58,904 - INFO - Creating new topic: 'Recruitment and internal communications'
+2026-02-07 02:20:59,496 - INFO - Created task: 'Fix CampusChef DB latency' assigned to ['Michael Huang']
+2026-02-07 02:20:59,612 - INFO - Created task: 'Refactor LectureLens summarization' assigned to ['Alice Smith']
+2026-02-07 02:20:59,734 - INFO - Created task: 'Create StudyBuddy launch graphics' assigned to ['Chloe Lim']
+2026-02-07 02:20:59,854 - INFO - Created task: 'Confirm venue booking for Trivia Night' assigned to ['Daniel Zhang']
+2026-02-07 02:20:59,975 - INFO - Created task: 'Update LectureLens documentation' assigned to ['Michael Huang']
+2026-02-07 02:21:00,094 - INFO - Created task: 'Review recruitment email copy' assigned to ['Andy Shang']
+2026-02-07 02:21:00,693 - ERROR - Transcript integration error: (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.UniqueViolationError'>: duplicate key value violates unique constraint "Meeting_meeting_id_key"
+DETAIL:  Key (meeting_id)=(1) already exists.
+[SQL: INSERT INTO public.meeting (meeting_name, meeting_type, meeting_summary) VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR) RETURNING public.meeting.meeting_id, public.meeting.ingestion_timestamp]
+[parameters: ('trial_full_meeting', 'full', 'The meeting primarily focused on progress updates and upcoming deadlines for three key projects: CampusChef, LectureLens, and StudyBuddy AI, alongsid ... (1915 characters truncated) ... erall, the meeting ensured alignment on project milestones and assigned actionable next steps to maintain momentum during a busy mid-semester period.')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+NoneType: None
+2026-02-07 02:23:11,774 - INFO - File watcher stopped
+2026-02-07 02:23:16,426 - INFO - FileWatcher initialized for: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing
+2026-02-07 02:23:16,427 - INFO - Started watching: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing
+2026-02-07 02:23:29,704 - INFO - New file detected: test_trans.txt
+2026-02-07 02:24:41,217 - INFO - File copied: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing\test_trans.txt -> C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing\full\INGESTED_full_07-02-2026_trial_meeting_trans.txt
+2026-02-07 02:24:43,769 - INFO - Original file deleted: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing\test_trans.txt
+2026-02-07 02:24:55,784 - INFO - TranscriptIntegrator initialized with model: gpt-4.1-mini
+2026-02-07 02:24:55,784 - INFO - Loading context from database...
+2026-02-07 02:24:59,266 - INFO - Loaded 8 members, 3 projects, 7 topics
+2026-02-07 02:24:59,266 - INFO - Processing transcript: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing\full\INGESTED_full_07-02-2026_trial_meeting_trans.txt
+2026-02-07 02:24:59,270 - INFO - Extracting meeting information with LLM...
+2026-02-07 02:25:00,847 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-07 02:25:08,905 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-07 02:25:14,423 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-07 02:25:22,637 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-07 02:25:23,007 - INFO - Created task: 'Fix CampusChef DB latency' assigned to ['Michael Huang']
+2026-02-07 02:25:23,124 - INFO - Created task: 'Refactor LectureLens summarization' assigned to ['Alice Smith']
+2026-02-07 02:25:23,241 - INFO - Created task: 'Create StudyBuddy launch graphics' assigned to ['Chloe Lim']
+2026-02-07 02:25:23,358 - INFO - Created task: 'Confirm venue booking for Trivia Night' assigned to ['Daniel Zhang']
+2026-02-07 02:25:23,475 - INFO - Created task: 'Update LectureLens documentation' assigned to ['Michael Huang']
+2026-02-07 02:25:23,593 - INFO - Created task: 'Review recruitment email copy' assigned to ['Andy Shang']
+2026-02-07 02:25:24,064 - INFO - Created meeting with ID: 4
+2026-02-07 02:25:25,477 - INFO - TranscriptIntegrator closed
+2026-02-07 02:27:44,825 - INFO - File watcher stopped
+2026-02-07 02:31:39,170 - INFO - FileWatcher initialized for: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing
+2026-02-07 02:31:39,171 - INFO - Started watching: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing
+2026-02-07 02:31:48,034 - INFO - New file detected: meeting_saved_closed_caption.txt
+2026-02-07 02:32:33,688 - INFO - File copied: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing\meeting_saved_closed_caption.txt -> C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing\executive\INGESTED_executive_07-02-2026_lecturelens_progress_update.txt
+2026-02-07 02:32:36,904 - INFO - Original file deleted: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing\meeting_saved_closed_caption.txt
+2026-02-07 02:32:49,185 - INFO - TranscriptIntegrator initialized with model: gpt-4.1-mini
+2026-02-07 02:32:49,185 - INFO - Loading context from database...
+2026-02-07 02:32:52,567 - INFO - Loaded 8 members, 3 projects, 7 topics
+2026-02-07 02:32:52,567 - INFO - Processing transcript: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing\executive\INGESTED_executive_07-02-2026_lecturelens_progress_update.txt
+2026-02-07 02:32:52,593 - INFO - Extracting meeting information with LLM...
+2026-02-07 02:32:53,494 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-07 02:32:55,476 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-07 02:33:01,523 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-07 02:33:05,225 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-07 02:33:05,587 - INFO - Created task: 'Oversee and drive finance aspect of Lecture Lens' assigned to ['Alice Smith']
+2026-02-07 02:33:05,704 - INFO - Created task: 'Follow up on Alice's progress for Lecture Lens finance task' assigned to ['Andy Shang']
+2026-02-07 02:33:05,819 - INFO - Created task: 'Find a girlfriend for Andy Shang' assigned to ['Andy Shang']
+2026-02-07 02:33:06,285 - INFO - Created meeting with ID: 5
+2026-02-07 02:33:07,690 - INFO - TranscriptIntegrator closed
+2026-02-08 00:23:19,549 - INFO - FileWatcher initialized for: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing
+2026-02-08 00:23:19,551 - INFO - Started watching: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing
+2026-02-08 00:24:46,323 - INFO - New file detected: meeting_saved_closed_caption.txt
+2026-02-08 00:26:03,908 - INFO - File copied: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing\meeting_saved_closed_caption.txt -> C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing\full\INGESTED_full_08-02-2026_secretary_ai_introduction.txt
+2026-02-08 00:26:06,307 - INFO - Original file deleted: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing\meeting_saved_closed_caption.txt
+2026-02-08 00:26:11,722 - INFO - TranscriptIntegrator initialized with model: gpt-4.1-mini
+2026-02-08 00:26:11,722 - INFO - Loading context from database...
+2026-02-08 00:26:15,161 - INFO - Loaded 8 members, 4 projects, 7 topics
+2026-02-08 00:26:15,162 - INFO - Processing transcript: C:\Users\andys\Desktop\Hackathon Projects\Secretary_AI\landing\full\INGESTED_full_08-02-2026_secretary_ai_introduction.txt
+2026-02-08 00:26:15,206 - INFO - Extracting meeting information with LLM...
+2026-02-08 00:26:16,744 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-08 00:26:22,160 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-08 00:26:24,861 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-08 00:26:30,762 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-08 00:26:31,119 - INFO - Created task: 'Create Messenger Version of Product' assigned to ['Michael Huang']
+2026-02-08 00:26:31,234 - INFO - Created task: 'Integrate Google Drive API' assigned to ['Andy Shang']
+2026-02-08 00:26:31,696 - INFO - Created meeting with ID: 6
+2026-02-08 00:26:33,106 - INFO - TranscriptIntegrator closed
+2026-02-08 00:58:03,513 - INFO - File watcher stopped
